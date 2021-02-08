@@ -82,6 +82,9 @@
                             <descriptors>
                                 <descriptor>src/main/assemblies/stage-lib.xml</descriptor>
                             </descriptors>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
                         </configuration>
                     </execution>
                 </executions>
