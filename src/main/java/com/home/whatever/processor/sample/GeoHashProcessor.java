@@ -19,13 +19,11 @@ public class GeoHashProcessor extends SingleLaneRecordProcessor {
   private GeohashCalculator geohashCalculator = new GeohashCalculator();
 
   @Override
-  protected void process(
-      final Record record, final SingleLaneBatchMaker batchMaker
-  ) throws StageException {
-    final double latitude = record.get("Latitude").getValueAsDouble();
-    final double longitude = record.get("Longitude").getValueAsDouble();
+  protected void process(final Record record, final SingleLaneBatchMaker batchMaker) {
+    final double latitude = record.get("/Latitude").getValueAsDouble();
+    final double longitude = record.get("/Longitude").getValueAsDouble();
     final String geoHash = geohashCalculator.calculate(latitude, longitude, 4);
-    record.set("Geohash", Field.create(geoHash));
+    record.set("/Geohash", Field.create(geoHash));
     batchMaker.addRecord(record);
   }
 }
